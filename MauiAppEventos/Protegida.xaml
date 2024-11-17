@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppEventos.Protegida"
+             Title="Protegida"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource SecondaryBrush}"
+             >
+
+    <VerticalStackLayout VerticalOptions="CenterAndExpand" Padding="10" >
+        
+        <Label 
+            Text="Crie seu evento"
+            TextColor="BlueViolet"
+            FontFamily="kalam"
+            FontSize="40"
+            VerticalTextAlignment="Center"/>
+        
+
+        <Frame Margin="10" BackgroundColor="GhostWhite">
+            <VerticalStackLayout>
+                <Grid RowDefinitions="auto,auto"
+                      ColumnDefinitions="*,*,2*">
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Text="Convidados:"/>
+                    
+                    <Label Grid.Row="0" Grid.Column="1"
+                           Text="{Binding Value}"
+                           BindingContext="{x:Reference stp_convidados}"/>
+                    <Stepper Grid.Row="0" Grid.Column="2"
+                             x:Name="stp_convidados"
+                             Minimum="0"
+                             Maximum="100"
+                             Increment="1"/>
+
+
+                </Grid>
+
+                <Label Text="Escolha o tipo de evento"/>
+                <Picker x:Name="pck_evento"
+                        Title="selecione o tipo de evento"
+                        ItemDisplayBinding="{Binding descricao}"/>
+                <Frame Padding="10" Margin="10">
+                    <VerticalStackLayout>
+                        <Label Text="Data do evento"/>
+                        <HorizontalStackLayout>
+                            <Label Text="Selecione a data :"/>
+                            <DatePicker x:Name="dtpck_evento"
+                                        Format="dd/MM/yyyy"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+                <Button Text=" Avançar" Clicked="Button_Clicked"/>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+    
+</ContentPage>
